@@ -9,14 +9,14 @@ import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp(name = "SayWattBlueTeleOp (Blocks to Java)")
 public class SayWattBlueTeleOp extends LinearOpMode {
 
-  private DcMotor Rightfront;
-  private DcMotor Leftfront;
-  private DcMotor rightrear;
-  private DcMotor leftrear;
-  private DcMotor duckwheel;
+  private DcMotor rightFront;
+  private DcMotor leftFront;
+  private DcMotor rightRear;
+  private DcMotor leftRear;
+  private DcMotor duckWheel;
   private Servo Rightgrabberservo;
   private Servo Leftgrabberservo;
-  private DcMotor AAAAAARM;
+  private DcMotor armMotor;
   private DcMotor duckwheel2;
 
   /**
@@ -29,27 +29,32 @@ public class SayWattBlueTeleOp extends LinearOpMode {
     float Leftstickpower;
     float Leftstickturn;
 
-    Rightfront = hardwareMap.get(DcMotor.class, "Rightfront");
-    Leftfront = hardwareMap.get(DcMotor.class, "Leftfront");
-    rightrear = hardwareMap.get(DcMotor.class, "rightrear");
-    leftrear = hardwareMap.get(DcMotor.class, "leftrear");
-    duckwheel = hardwareMap.get(DcMotor.class, "duckwheel");
+    rightFront = hardwareMap.get(DcMotor.class, "Rightfront");
+    leftFront = hardwareMap.get(DcMotor.class, "Leftfront");
+    rightRear = hardwareMap.get(DcMotor.class, "rightrear");
+    leftRear = hardwareMap.get(DcMotor.class, "leftrear");
+    duckWheel = hardwareMap.get(DcMotor.class, "duckwheel");
     Rightgrabberservo = hardwareMap.get(Servo.class, "Rightgrabberservo");
     Leftgrabberservo = hardwareMap.get(Servo.class, "Leftgrabberservo");
-    AAAAAARM = hardwareMap.get(DcMotor.class, "AAAAAARM");
+    armMotor = hardwareMap.get(DcMotor.class, "AAAAAARM");
     duckwheel2 = hardwareMap.get(DcMotor.class, "duckwheel2");
 
-    Rightfront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-    Leftfront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-    rightrear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-    leftrear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-    duckwheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+    rightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+    leftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+    rightRear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+    leftRear.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+    duckWheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+
     // Put initialization blocks here.
     Rightgrabberservo.setDirection(Servo.Direction.FORWARD);
     Leftgrabberservo.setDirection(Servo.Direction.REVERSE);
+    leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
+    rightRear.setDirection(DcMotorSimple.Direction.REVERSE);
     waitForStart();
-    Leftfront.setDirection(DcMotorSimple.Direction.REVERSE);
-    rightrear.setDirection(DcMotorSimple.Direction.REVERSE);
+
+
+
     if (opModeIsActive()) {
       // Put run blocks here.
       while (opModeIsActive()) {
@@ -57,44 +62,42 @@ public class SayWattBlueTeleOp extends LinearOpMode {
         Turnright = gamepad1.right_bumper;
         Leftstickpower = gamepad1.left_stick_y;
         Leftstickturn = gamepad1.left_stick_x;
-        // Put loop blocks here.
-        telemetry.update();
-        AAAAAARM.setPower(gamepad1.right_stick_y);
+        armMotor.setPower(gamepad1.right_stick_y);
+
         if (gamepad1.dpad_up) {
-          Rightfront.setPower(-0.5);
-          Leftfront.setPower(-0.5);
-          leftrear.setPower(0.5);
-          rightrear.setPower(0.5);
+          rightFront.setPower(-0.5);
+          leftFront.setPower(-0.5);
+          leftRear.setPower(0.5);
+          rightRear.setPower(0.5);
         } else if (gamepad1.dpad_left) {
-          Rightfront.setPower(-0.5);
-          Leftfront.setPower(0.5);
-          rightrear.setPower(0.5);
-          leftrear.setPower(-0.5);
+          rightFront.setPower(-0.5);
+          leftFront.setPower(0.5);
+          rightRear.setPower(0.5);
+          leftRear.setPower(-0.5);
+        } else if (gamepad1.dpad_right) {
+            rightFront.setPower(0.5);
+            leftFront.setPower(-0.5);
+            rightRear.setPower(-0.5);
+            leftRear.setPower(0.5);
+        } else if (gamepad1.dpad_down) {
+          leftFront.setPower(0.5);
+          rightFront.setPower(0.5);
+          rightRear.setPower(-0.5);
+          leftRear.setPower(-0.5);
         } else {
-          if (gamepad1.dpad_right) {
-            Rightfront.setPower(0.5);
-            Leftfront.setPower(-0.5);
-            rightrear.setPower(-0.5);
-            leftrear.setPower(0.5);
-          } else {
-            Rightfront.setPower(0);
-            Leftfront.setPower(0);
-            rightrear.setPower(0);
-            leftrear.setPower(0);
+          rightFront.setPower(0);
+          leftFront.setPower(0);
+          rightRear.setPower(0);
+          leftRear.setPower(0);
           }
-          if (gamepad1.dpad_down) {
-            Leftfront.setPower(0.5);
-            Rightfront.setPower(0.5);
-            rightrear.setPower(-0.5);
-            leftrear.setPower(-0.5);
-          }
-        }
+
+
         if (gamepad1.a) {
-          duckwheel.setPower(0.7);
+          duckWheel.setPower(0.7);
         } else if (gamepad1.b) {
-          duckwheel.setPower(-0.7);
+          duckWheel.setPower(-0.7);
         } else {
-          duckwheel.setPower(0);
+          duckWheel.setPower(0);
         }
         if (gamepad1.y) {
           duckwheel2.setPower(0.7);
