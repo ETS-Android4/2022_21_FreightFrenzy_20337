@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -29,10 +30,10 @@ public class SayWattBlueTeleOp extends LinearOpMode {
     float Leftstickpower;
     float Leftstickturn;
 
-    rightFront = hardwareMap.get(DcMotor.class, "Rightfront");
-    leftFront = hardwareMap.get(DcMotor.class, "Leftfront");
-    rightRear = hardwareMap.get(DcMotor.class, "rightrear");
-    leftRear = hardwareMap.get(DcMotor.class, "leftrear");
+    rightFront = hardwareMap.get(DcMotor.class, "rightFront");
+    leftFront = hardwareMap.get(DcMotor.class, "leftFront");
+    rightRear = hardwareMap.get(DcMotor.class, "rightRear");
+    leftRear = hardwareMap.get(DcMotor.class, "leftRear");
     duckWheel = hardwareMap.get(DcMotor.class, "duckwheel");
     Rightgrabberservo = hardwareMap.get(Servo.class, "Rightgrabberservo");
     Leftgrabberservo = hardwareMap.get(Servo.class, "Leftgrabberservo");
