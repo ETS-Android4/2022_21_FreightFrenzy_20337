@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -56,8 +56,7 @@ public class SayWattBlueTeleOp extends LinearOpMode {
 
 
 
-    if (opModeIsActive()) {
-      // Put run blocks here.
+
       while (opModeIsActive()) {
         Turnleft = gamepad1.left_bumper;
         Turnright = gamepad1.right_bumper;
@@ -113,9 +112,10 @@ public class SayWattBlueTeleOp extends LinearOpMode {
         } else if (gamepad2.left_bumper) {
           Leftgrabberservo.setPosition(0);
           Rightgrabberservo.setPosition(0);
-        } else {
         }
+
+
       }
-    }
+
   }
 }
