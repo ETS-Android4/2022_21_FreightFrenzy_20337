@@ -93,16 +93,16 @@ public class SayWattBlueTeleOp extends LinearOpMode {
 
 
         if (gamepad1.a) {
-          duckWheel.setPower(0.7);
+          duckWheel.setPower(0.9);
         } else if (gamepad1.b) {
-          duckWheel.setPower(-0.7);
+          duckWheel.setPower(-0.9);
         } else {
           duckWheel.setPower(0);
         }
         if (gamepad1.y) {
-          duckwheel2.setPower(0.7);
+          duckwheel2.setPower(0.9);
         } else if (gamepad1.x) {
-          duckwheel2.setPower(-0.7);
+          duckwheel2.setPower(-0.9);
         } else {
           duckwheel2.setPower(0);
         }
