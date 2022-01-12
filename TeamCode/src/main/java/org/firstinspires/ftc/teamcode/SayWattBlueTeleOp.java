@@ -24,11 +24,6 @@ public class SayWattBlueTeleOp extends LinearOpMode {
    */
   @Override
   public void runOpMode() {
-    boolean Turnleft;
-    boolean Turnright;
-    float Leftstickpower;
-    float Leftstickturn;
-
     rightFront = hardwareMap.get(DcMotor.class, "rightFront");
     leftFront = hardwareMap.get(DcMotor.class, "leftFront");
     rightRear = hardwareMap.get(DcMotor.class, "rightRear");
@@ -57,10 +52,6 @@ public class SayWattBlueTeleOp extends LinearOpMode {
 
 
     while (opModeIsActive()) {
-      Turnleft = gamepad1.left_bumper;
-      Turnright = gamepad1.right_bumper;
-      Leftstickpower = gamepad1.left_stick_y;
-      Leftstickturn = gamepad1.left_stick_x;
       armMotor.setPower(gamepad1.right_stick_y);
 
       if (gamepad1.dpad_up) {
