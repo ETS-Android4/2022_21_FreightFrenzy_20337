@@ -55,25 +55,25 @@ public class SayWattBlueTeleOp extends LinearOpMode {
       armMotor.setPower(gamepad1.right_stick_y);
 
       if (gamepad1.dpad_up) {
-        rightFront.setPower(-1.1);
-        leftFront.setPower(-1.1);
-        leftRear.setPower(1.1);
-        rightRear.setPower(1.1);
+        rightFront.setPower(-0.9);
+        leftFront.setPower(-0.9);
+        leftRear.setPower(0.9);
+        rightRear.setPower(0.9);
       } else if (gamepad1.dpad_left) {
-        rightFront.setPower(-1.1);
-        leftFront.setPower(1.1);
-        rightRear.setPower(1.1);
-        leftRear.setPower(-1.1);
+        rightFront.setPower(-0.9);
+        leftFront.setPower(0.9);
+        rightRear.setPower(0.9);
+        leftRear.setPower(-0.9);
       } else if (gamepad1.dpad_right) {
-        rightFront.setPower(1.1);
-        leftFront.setPower(-1.1);
-        rightRear.setPower(-1.1);
-        leftRear.setPower(1.1);
+        rightFront.setPower(0.9);
+        leftFront.setPower(-0.9);
+        rightRear.setPower(-0.9);
+        leftRear.setPower(0.9);
       } else if (gamepad1.dpad_down) {
-        leftFront.setPower(1.1);
-        rightFront.setPower(1.1);
-        rightRear.setPower(-1.1);
-        leftRear.setPower(-1.1);
+        leftFront.setPower(0.9);
+        rightFront.setPower(0.9);
+        rightRear.setPower(-0.9);
+        leftRear.setPower(-0.9);
       } else {
         rightFront.setPower(0);
         leftFront.setPower(0);
