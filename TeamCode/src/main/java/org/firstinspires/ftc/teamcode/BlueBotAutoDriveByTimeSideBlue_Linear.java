@@ -6,9 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@Autonomous(name="Autonomous Red Side DW")
-public class BlueBotAutoDriveByTime_Linear extends LinearOpMode {
-
+@Autonomous(name = "Autonomous Blue Side DW")
+public class BlueBotAutoDriveByTimeSideBlue_Linear extends LinearOpMode{
     private DcMotor rightFront;
     private DcMotor leftFront;
     private DcMotor rightRear;
@@ -22,7 +21,6 @@ public class BlueBotAutoDriveByTime_Linear extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-
 
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
         leftFront = hardwareMap.get(DcMotor.class, "leftFront");
@@ -48,7 +46,7 @@ public class BlueBotAutoDriveByTime_Linear extends LinearOpMode {
 
 
         drive(-0.5, 150);
-        spinWheel(-0.8,  5000);
+        spinWheel(0.8,  5000);
         turn(0.85, 800);
         drive(0.5, 1800);
 
@@ -56,9 +54,9 @@ public class BlueBotAutoDriveByTime_Linear extends LinearOpMode {
     }
 
     private void spinWheel(double speed, long sleep) throws InterruptedException{
-        duckWheel.setPower(speed);
+        duckwheel2.setPower(speed);
         Thread.sleep(sleep);
-        duckWheel.setPower(0);
+        duckwheel2.setPower(0);
     }
 
     private void drive(double speed, long sleep) throws InterruptedException{
@@ -74,16 +72,14 @@ public class BlueBotAutoDriveByTime_Linear extends LinearOpMode {
     }
 
     private void turn(double speed, long sleep) throws InterruptedException {
-        rightFront.setPower(speed);
-        rightRear.setPower(speed);
-        leftFront.setPower(-speed);
-        leftRear.setPower(-speed);
+        rightFront.setPower(-speed);
+        rightRear.setPower(-speed);
+        leftFront.setPower(speed);
+        leftRear.setPower(speed);
         Thread.sleep(sleep);
         rightFront.setPower(0);
         rightRear.setPower(0);
         leftFront.setPower(0);
         leftRear.setPower(0);
     }
-
-
 }
