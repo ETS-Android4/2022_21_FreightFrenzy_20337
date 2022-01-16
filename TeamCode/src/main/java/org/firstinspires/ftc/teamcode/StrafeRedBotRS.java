@@ -7,16 +7,12 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name = "Autonomous Red Bot RDW")
-public class RedbotAutoDrivebyTime extends LinearOpMode {
+@Autonomous(name = "Autonomous Red Bot Strafe 1")
+public class StrafeRedBotRS extends LinearOpMode {
     private DcMotor frontRight;
     private DcMotor frontLeft;
     private DcMotor backRight;
     private DcMotor backLeft;
-    private DcMotor duckWheelBackright;
-    private Servo Leftgrabberservo;
-    private DcMotor arm;
-    private DcMotor armExtension;
 
 
 
@@ -28,8 +24,6 @@ public class RedbotAutoDrivebyTime extends LinearOpMode {
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         backRight = hardwareMap.get(DcMotor.class, "backRight");
         backLeft = hardwareMap.get(DcMotor.class, "backLeft");
-        duckWheelBackright = hardwareMap.get(DcMotor.class, "duckWheelBackright");
-        arm = hardwareMap.get(DcMotor.class, "arm");
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -42,39 +36,21 @@ public class RedbotAutoDrivebyTime extends LinearOpMode {
         waitForStart();
 
 
-        drive(-0.5, 600);
-        spinWheel(-0.8,  5000);
-        turn(0.85, 1100);
-        drive(0.5, 2800);
+        strafe(0.8, 2400);
 
     }
 
-    private void spinWheel(double speed, long sleep) throws InterruptedException{
-        duckWheelBackright.setPower(speed);
-        Thread.sleep(sleep);
-        duckWheelBackright.setPower(0);
-    }
-
-    private void drive(double speed, long sleep) throws InterruptedException {
-        frontRight.setPower(speed);
-        backRight.setPower(speed);
-        frontLeft.setPower(speed);
+    private void strafe(double speed, int sleep) throws InterruptedException{
+        frontLeft.setPower(-speed);
         backLeft.setPower(speed);
+        frontRight.setPower(speed);
+        backRight.setPower(-speed);
         Thread.sleep(sleep);
         frontLeft.setPower(0);
         backLeft.setPower(0);
         frontRight.setPower(0);
         backRight.setPower(0);
+
     }
-        private void turn(double speed, long sleep) throws InterruptedException {
-            frontRight.setPower(speed);
-            backRight.setPower(speed);
-            frontLeft.setPower(-speed);
-            backLeft.setPower(-speed);
-            Thread.sleep(sleep);
-            frontRight.setPower(0);
-            backRight.setPower(0);
-            frontLeft.setPower(0);
-            backLeft.setPower(0);
-    }
+
 }

@@ -8,7 +8,6 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @TeleOp(name = "SayWattRedTeleOp3 (Blocks to Java)")
 public class SayWattRedTeleOp extends LinearOpMode {
-
     private DcMotor frontRight;
     private DcMotor frontLeft;
     private DcMotor backRight;
@@ -19,9 +18,6 @@ public class SayWattRedTeleOp extends LinearOpMode {
     private DcMotor LeftDuckWheel;
     private DcMotor armExtension;
 
-    /**
-     * This function is executed when this Op Mode is selected from the Driver Station.
-     */
     @Override
     public void runOpMode() {
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
@@ -61,10 +57,10 @@ public class SayWattRedTeleOp extends LinearOpMode {
                     }
                 }
                 if (gamepad2.y) {
-                    arm.setPower(0.5);
+                    arm.setPower(1);
                 } else {
                     if (gamepad2.a) {
-                        arm.setPower(-0.5);
+                        arm.setPower(-1);
                     } else {
                         arm.setPower(0);
                     }
@@ -86,10 +82,10 @@ public class SayWattRedTeleOp extends LinearOpMode {
                     backRight.setPower(0.6);
                 } else {
                     if (gamepad1.dpad_up) {
-                        frontLeft.setPower(1);
-                        frontRight.setPower(1);
-                        backLeft.setPower(1);
-                        backRight.setPower(1);
+                        frontLeft.setPower(0.8);
+                        frontRight.setPower(0.8);
+                        backLeft.setPower(0.8);
+                        backRight.setPower(0.8);
                     } else if (gamepad1.x && gamepad1.dpad_down) {
                         frontLeft.setPower(-0.6);
                         frontRight.setPower(-0.6);
@@ -97,21 +93,21 @@ public class SayWattRedTeleOp extends LinearOpMode {
                         backRight.setPower(-0.6);
                     } else {
                         if (gamepad1.dpad_down) {
-                            frontLeft.setPower(-1);
-                            frontRight.setPower(-1);
-                            backLeft.setPower(-1);
-                            backRight.setPower(-1);
+                            frontLeft.setPower(-0.8);
+                            frontRight.setPower(-0.8);
+                            backLeft.setPower(-0.8);
+                            backRight.setPower(-0.8);
                         } else {
                             if (gamepad1.x && gamepad1.dpad_left) {
-                                frontRight.setPower(1);
-                                frontLeft.setPower(-1);
-                                backRight.setPower(-1);
-                                backLeft.setPower(1);
+                                frontRight.setPower(0.8);
+                                frontLeft.setPower(-0.8);
+                                backRight.setPower(-0.8);
+                                backLeft.setPower(0.8);
                             } else if (gamepad1.x && gamepad1.dpad_right) {
-                                frontRight.setPower(-1);
-                                frontLeft.setPower(1);
-                                backRight.setPower(1);
-                                backLeft.setPower(-1);
+                                frontRight.setPower(-0.8);
+                                frontLeft.setPower(0.8);
+                                backRight.setPower(0.8);
+                                backLeft.setPower(-0.8);
                             } else {
                                 if (gamepad1.dpad_right) {
                                     frontRight.setPower(-0.5);
