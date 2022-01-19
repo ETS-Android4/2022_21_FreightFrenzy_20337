@@ -46,6 +46,7 @@ public class SayWattRedTeleOp extends LinearOpMode {
         while (opModeIsActive()) {
             double SpeedOfRobotUpDown = 0.8;
             double SpeedOfRobotLeftRight = 0.5;
+            double SpeedOfRobotArm = 1;
             if (gamepad1.left_bumper) {
                 telemetry.addLine("Slowed Speed");
                 telemetry.update();
@@ -62,6 +63,19 @@ public class SayWattRedTeleOp extends LinearOpMode {
                 SpeedOfRobotLeftRight = 0.5;
                 SpeedOfRobotUpDown = 0.8;
             }
+            if (gamepad2.left_bumper) {
+                telemetry.addLine("Arm: Slowed Speed");
+                telemetry.update();
+                SpeedOfRobotArm = 0.6;
+            } else if (gamepad2.right_bumper) {
+                telemetry.addLine("Arm: Default Speed");
+                telemetry.update();
+                SpeedOfRobotArm = 1;
+            } else {
+                telemetry.addLine("Arm: Default Speed");
+                telemetry.update();
+                SpeedOfRobotArm = 1;
+            }
 
             if (gamepad2.x) {
                 grabber.setPower(1);
@@ -73,10 +87,10 @@ public class SayWattRedTeleOp extends LinearOpMode {
                 }
             }
             if (gamepad2.y) {
-                arm.setPower(1);
+                arm.setPower(SpeedOfRobotArm);
             } else {
                 if (gamepad2.a) {
-                    arm.setPower(-1);
+                    arm.setPower(-SpeedOfRobotArm);
                 } else {
                     arm.setPower(0);
                 }
