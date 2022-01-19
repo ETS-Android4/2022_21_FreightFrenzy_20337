@@ -14,8 +14,6 @@ public class StrafeRedBotRS extends LinearOpMode {
     private DcMotor backRight;
     private DcMotor backLeft;
 
-
-
     @Override
     public void runOpMode() throws InterruptedException {
 
@@ -35,9 +33,7 @@ public class StrafeRedBotRS extends LinearOpMode {
 
         waitForStart();
 
-
         strafe(0.8, 2400);
-
     }
 
     private void strafe(double speed, int sleep) throws InterruptedException{
