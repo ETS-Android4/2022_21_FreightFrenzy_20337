@@ -45,14 +45,14 @@ public class SayWattBlueTeleOp extends LinearOpMode {
     waitForStart();
 
     while (opModeIsActive()) {
-      double SpeedOfRobotUpDownLeftRight = 0.5;
+      double SpeedOfRobotUpDownLeftRight = 0.3;
       double SpeedOfRobotArm = 0;
       if (gamepad1.left_bumper) {
         telemetry.addLine("Drive: Fast Speed");
         SpeedOfRobotUpDownLeftRight = 0.9;
       } else {
         telemetry.addLine("Drive: Default Speed");
-        SpeedOfRobotUpDownLeftRight = 0.5;
+        SpeedOfRobotUpDownLeftRight = 0.3;
       }
       if (gamepad1.right_bumper) {
         telemetry.addLine("Arm: Slowed Speed");
