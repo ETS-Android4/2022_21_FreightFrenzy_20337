@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@Autonomous(name = "Autonomous Red Side Stgraight")
-public class BlueBotAutoDriveByTime_BlueSide_Alternative extends LinearOpMode{
+@Autonomous(name = "Autonomous Blue Side Stgraight")
+public class BlueBotAutoDriveByTime_RedSide_Alternative extends LinearOpMode{
     private DcMotor rightFront;
     private DcMotor leftFront;
     private DcMotor rightRear;
@@ -71,10 +71,10 @@ public class BlueBotAutoDriveByTime_BlueSide_Alternative extends LinearOpMode{
     }
 
     private void turn(double speed, long sleep) throws InterruptedException {
-        rightFront.setPower(speed);
-        rightRear.setPower(speed);
-        leftFront.setPower(-speed);
-        leftRear.setPower(-speed);
+        rightFront.setPower(-speed);
+        rightRear.setPower(-speed);
+        leftFront.setPower(speed);
+        leftRear.setPower(speed);
         Thread.sleep(sleep);
         rightFront.setPower(0);
         rightRear.setPower(0);

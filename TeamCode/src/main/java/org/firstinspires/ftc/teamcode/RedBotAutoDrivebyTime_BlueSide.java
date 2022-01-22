@@ -15,12 +15,8 @@ public class RedBotAutoDrivebyTime_BlueSide extends LinearOpMode {
     private DcMotor backLeft;
     private DcMotor duckWheelBackleft;
 
-
-
     @Override
     public void runOpMode() throws InterruptedException {
-
-
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         backRight = hardwareMap.get(DcMotor.class, "backRight");

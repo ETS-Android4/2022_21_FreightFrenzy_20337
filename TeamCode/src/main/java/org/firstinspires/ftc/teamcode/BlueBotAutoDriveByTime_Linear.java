@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@Autonomous(name="Autonomous Red Side DW")
+@Autonomous(name="Autonomous Blue Bot RDW")
 public class BlueBotAutoDriveByTime_Linear extends LinearOpMode {
 
     private DcMotor rightFront;
@@ -49,8 +49,8 @@ public class BlueBotAutoDriveByTime_Linear extends LinearOpMode {
 
         drive(-0.5, 150);
         spinWheel(-0.8,  5000);
-        turn(0.85, 800);
-        drive(0.5, 1800);
+        turn(0.65, 1000);
+        drive(0.5, 1465);
 
 
     }

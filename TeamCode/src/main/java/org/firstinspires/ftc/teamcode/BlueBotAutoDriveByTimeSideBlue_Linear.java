@@ -46,9 +46,9 @@ public class BlueBotAutoDriveByTimeSideBlue_Linear extends LinearOpMode{
 
 
         drive(-0.5, 150);
-        spinWheel(0.8,  5000);
-        turn(0.85, 800);
-        drive(0.5, 1800);
+        spinWheel(0.8,  5000);;
+        turn(0.65, 960);
+        drive(0.5, 1470);
 
 
     }

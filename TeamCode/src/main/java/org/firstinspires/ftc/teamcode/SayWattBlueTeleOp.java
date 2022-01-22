@@ -6,9 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@TeleOp(name = "SayWattBlueTeleOp (Blocks to Java)")
+@TeleOp(name = "SayWattBlueTeleOp")
 public class SayWattBlueTeleOp extends LinearOpMode {
-
   private DcMotor rightFront;
   private DcMotor leftFront;
   private DcMotor rightRear;
@@ -19,9 +18,6 @@ public class SayWattBlueTeleOp extends LinearOpMode {
   private DcMotor armMotor;
   private DcMotor duckwheel2;
 
-  /**
-   * This function is executed when this Op Mode is selected from the Driver Station.
-   */
   @Override
   public void runOpMode() {
     rightFront = hardwareMap.get(DcMotor.class, "rightFront");
@@ -48,32 +44,46 @@ public class SayWattBlueTeleOp extends LinearOpMode {
     rightRear.setDirection(DcMotorSimple.Direction.REVERSE);
     waitForStart();
 
-
-
-
     while (opModeIsActive()) {
-      armMotor.setPower(gamepad1.right_stick_y);
+      double SpeedOfRobotUpDownLeftRight = 0.5;
+      double SpeedOfRobotArm = 0;
+      if (gamepad1.left_bumper) {
+        telemetry.addLine("Drive: Fast Speed");
+        SpeedOfRobotUpDownLeftRight = 0.9;
+      } else {
+        telemetry.addLine("Drive: Default Speed");
+        SpeedOfRobotUpDownLeftRight = 0.5;
+      }
+      if (gamepad1.right_bumper) {
+        telemetry.addLine("Arm: Slowed Speed");
+        SpeedOfRobotArm = 0.4;
+      } else {
+        telemetry.addLine("Arm: Default Speed");
+        SpeedOfRobotArm = 0;
+      }
+      telemetry.update();
 
+      armMotor.setPower(gamepad1.right_stick_y-SpeedOfRobotArm);
       if (gamepad1.dpad_up) {
-        rightFront.setPower(-0.9);
-        leftFront.setPower(-0.9);
-        leftRear.setPower(0.9);
-        rightRear.setPower(0.9);
+        rightFront.setPower(-SpeedOfRobotUpDownLeftRight);
+        leftFront.setPower(-SpeedOfRobotUpDownLeftRight);
+        leftRear.setPower(SpeedOfRobotUpDownLeftRight);
+        rightRear.setPower(SpeedOfRobotUpDownLeftRight);
       } else if (gamepad1.dpad_left) {
-        rightFront.setPower(-0.9);
-        leftFront.setPower(0.9);
-        rightRear.setPower(0.9);
-        leftRear.setPower(-0.9);
+        rightFront.setPower(-SpeedOfRobotUpDownLeftRight);
+        leftFront.setPower(SpeedOfRobotUpDownLeftRight);
+        rightRear.setPower(SpeedOfRobotUpDownLeftRight);
+        leftRear.setPower(-SpeedOfRobotUpDownLeftRight);
       } else if (gamepad1.dpad_right) {
-        rightFront.setPower(0.9);
-        leftFront.setPower(-0.9);
-        rightRear.setPower(-0.9);
-        leftRear.setPower(0.9);
+        rightFront.setPower(SpeedOfRobotUpDownLeftRight);
+        leftFront.setPower(-SpeedOfRobotUpDownLeftRight);
+        rightRear.setPower(-SpeedOfRobotUpDownLeftRight);
+        leftRear.setPower(SpeedOfRobotUpDownLeftRight);
       } else if (gamepad1.dpad_down) {
-        leftFront.setPower(0.9);
-        rightFront.setPower(0.9);
-        rightRear.setPower(-0.9);
-        leftRear.setPower(-0.9);
+        leftFront.setPower(SpeedOfRobotUpDownLeftRight);
+        rightFront.setPower(SpeedOfRobotUpDownLeftRight);
+        rightRear.setPower(-SpeedOfRobotUpDownLeftRight);
+        leftRear.setPower(-SpeedOfRobotUpDownLeftRight);
       } else {
         rightFront.setPower(0);
         leftFront.setPower(0);
