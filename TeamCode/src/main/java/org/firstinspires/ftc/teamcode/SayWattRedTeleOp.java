@@ -93,7 +93,7 @@ public class SayWattRedTeleOp extends LinearOpMode {
                 duckWheelBackright.setPower(0);
                 LeftDuckWheel.setPower(0);
             }
-            if (gamepad1.x && gamepad1.dpad_up) {
+            if (gamepad1.right_bumper && gamepad1.dpad_up) {
                 frontLeft.setPower(0.6);
                 frontRight.setPower(0.6);
                 backLeft.setPower(0.6);
@@ -104,7 +104,7 @@ public class SayWattRedTeleOp extends LinearOpMode {
                     frontRight.setPower(SpeedOfRobotUpDown);
                     backLeft.setPower(SpeedOfRobotUpDown);
                     backRight.setPower(SpeedOfRobotUpDown);
-                } else if (gamepad1.x && gamepad1.dpad_down) {
+                } else if (gamepad1.right_bumper && gamepad1.dpad_down) {
                     frontLeft.setPower(-0.6);
                     frontRight.setPower(-0.6);
                     backLeft.setPower(-0.6);
@@ -116,12 +116,12 @@ public class SayWattRedTeleOp extends LinearOpMode {
                         backLeft.setPower(-SpeedOfRobotUpDown);
                         backRight.setPower(-SpeedOfRobotUpDown);
                     } else {
-                        if (gamepad1.x && gamepad1.dpad_left) {
+                        if (gamepad1.right_bumper && gamepad1.dpad_left) {
                             frontRight.setPower(0.8);
                             frontLeft.setPower(-0.8);
                             backRight.setPower(-0.8);
                             backLeft.setPower(0.8);
-                        } else if (gamepad1.x && gamepad1.dpad_right) {
+                        } else if (gamepad1.right_bumper && gamepad1.dpad_right) {
                             frontRight.setPower(-0.8);
                             frontLeft.setPower(0.8);
                             backRight.setPower(0.8);
