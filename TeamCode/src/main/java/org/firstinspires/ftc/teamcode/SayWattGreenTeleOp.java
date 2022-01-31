@@ -1,13 +1,11 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.hardware.motors.GoBILDA5201Series;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@TeleOp(name = "SayWattGreenTeleOp)")
+@TeleOp(name = "SayWattGreenTeleOp")
 public class SayWattGreenTeleOp extends LinearOpMode {
     private DcMotor frontRight;
     private DcMotor frontLeft;
@@ -21,7 +19,6 @@ public class SayWattGreenTeleOp extends LinearOpMode {
         backRight = hardwareMap.get(DcMotor.class, "backRight");
         backLeft = hardwareMap.get(DcMotor.class, "backLeft");
 
-        // Put initialization blocks here.
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         backRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -54,66 +51,61 @@ public class SayWattGreenTeleOp extends LinearOpMode {
             }
             telemetry.update();
 
-
-
-            {
-
-                if (gamepad1.x && gamepad1.dpad_up) {
-                    frontLeft.setPower(0.6);
-                    frontRight.setPower(-0.6);
-                    backLeft.setPower(0.6);
-                    backRight.setPower(0.6);
+            if (gamepad1.x && gamepad1.dpad_up) {
+                frontLeft.setPower(0.6);
+                frontRight.setPower(-0.6);
+                backLeft.setPower(0.6);
+                backRight.setPower(0.6);
+            } else {
+                if (gamepad1.dpad_up) {
+                    frontLeft.setPower(SpeedOfRobot);
+                    frontRight.setPower(SpeedOfRobot);
+                    backLeft.setPower(SpeedOfRobot);
+                    backRight.setPower(SpeedOfRobot);
+                } else if (gamepad1.x && gamepad1.dpad_down) {
+                    frontLeft.setPower(0.3);
+                    frontRight.setPower(-0.3);
+                    backLeft.setPower(-0.3);
+                    backRight.setPower(0.3);
                 } else {
-                    if (gamepad1.dpad_up) {
-                        frontLeft.setPower(SpeedOfRobot);
-                        frontRight.setPower(SpeedOfRobot);
-                        backLeft.setPower(SpeedOfRobot);
-                        backRight.setPower(SpeedOfRobot);
-                    } else if (gamepad1.x && gamepad1.dpad_down) {
-                        frontLeft.setPower(0.3);
-                        frontRight.setPower(-0.3);
-                        backLeft.setPower(-0.3);
-                        backRight.setPower(0.3);
+                    if (gamepad1.dpad_down) {
+                        frontLeft.setPower(-SpeedOfRobot);
+                        frontRight.setPower(-SpeedOfRobot);
+                        backLeft.setPower(-SpeedOfRobot);
+                        backRight.setPower(-SpeedOfRobot);
                     } else {
-                        if (gamepad1.dpad_down) {
-                            frontLeft.setPower(-SpeedOfRobot);
-                            frontRight.setPower(-SpeedOfRobot);
-                            backLeft.setPower(-SpeedOfRobot);
-                            backRight.setPower(-SpeedOfRobot);
+                        if (gamepad1.right_bumper) {
+                            frontRight.setPower(0.1);
+                            frontLeft.setPower(-0.1);
+                            backRight.setPower(-0.1);
+                            backLeft.setPower(0.1);
+                        } else if (gamepad1.left_bumper) {
+                            frontRight.setPower(-0.1);
+                            frontLeft.setPower(0.1);
+                            backRight.setPower(0.1);
+                            backLeft.setPower(-0.1);
                         } else {
-                            if (gamepad1.right_bumper) {
-                                frontRight.setPower(0.1);
-                                frontLeft.setPower(-0.1);
-                                backRight.setPower(-0.1);
-                                backLeft.setPower(0.1);
-                            } else if (gamepad1.left_bumper) {
-                                frontRight.setPower(-0.1);
-                                frontLeft.setPower(0.1);
-                                backRight.setPower(0.1);
-                                backLeft.setPower(-0.1);
+                            if (gamepad1.dpad_right) {
+                                frontRight.setPower(-SpeedOfRobot);
+                                frontLeft.setPower(SpeedOfRobot);
+                                backRight.setPower(-SpeedOfRobot);
+                                backLeft.setPower(SpeedOfRobot);
+                            } else if (gamepad1.dpad_left) {
+                                frontRight.setPower(SpeedOfRobot);
+                                frontLeft.setPower(-SpeedOfRobot);
+                                backRight.setPower(SpeedOfRobot);
+                                backLeft.setPower(-SpeedOfRobot);
                             } else {
-                                if (gamepad1.dpad_right) {
-                                    frontRight.setPower(-SpeedOfRobot);
-                                    frontLeft.setPower(SpeedOfRobot);
-                                    backRight.setPower(-SpeedOfRobot);
-                                    backLeft.setPower(SpeedOfRobot);
-                                } else if (gamepad1.dpad_left) {
-                                    frontRight.setPower(SpeedOfRobot);
-                                    frontLeft.setPower(-SpeedOfRobot);
-                                    backRight.setPower(SpeedOfRobot);
-                                    backLeft.setPower(-SpeedOfRobot);
-                                } else {
-                                    frontLeft.setPower(0);
-                                    frontRight.setPower(0);
-                                    backLeft.setPower(0);
-                                    backRight.setPower(0);
-                                }
-
+                                frontLeft.setPower(0);
+                                frontRight.setPower(0);
+                                backLeft.setPower(0);
+                                backRight.setPower(0);
                             }
+
                         }
                     }
                 }
-                telemetry.update();
             }
         }
-    }}
+    }
+}
