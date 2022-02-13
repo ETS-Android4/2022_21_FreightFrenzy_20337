@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@TeleOp(name = "SayWattOrangeBot")
+@TeleOp(name = "SayWattBlueWheelBot")
 public class SayWattBlackTeleOp extends LinearOpMode {
     private DcMotor frontRight;
     private DcMotor frontLeft;
@@ -14,6 +14,7 @@ public class SayWattBlackTeleOp extends LinearOpMode {
     private DcMotor backLeft;
     private DcMotor duckWheelLeft;
     private DcMotor duckWheelRight;
+    private DcMotor arm;
 
     @Override
     public void runOpMode() {
@@ -21,8 +22,9 @@ public class SayWattBlackTeleOp extends LinearOpMode {
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         backRight = hardwareMap.get(DcMotor.class, "backRight");
         backLeft = hardwareMap.get(DcMotor.class, "backLeft");
-        duckWheelLeft = hardwareMap.get(DcMotor.class, "duckWheelRight");
+        duckWheelLeft = hardwareMap.get(DcMotor.class, "duckWheelLeft");
         duckWheelRight = hardwareMap.get(DcMotor.class, "duckWheelRight");
+        arm = hardwareMap.get(DcMotor.class, "arm");
 
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
         frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -43,17 +45,31 @@ public class SayWattBlackTeleOp extends LinearOpMode {
                 SpeedOfRobotLeftRight = 0.8;
                 SpeedOfRobotUpDown = 0.8;
             }
-            telemetry.update();
 
-            if (gamepad1.a) {
-                duckWheelRight.setPower(0.9);
-                duckWheelLeft.setPower(0.9);
-            } else if (gamepad1.a && gamepad1.x)  {
+            if( gamepad1.a && gamepad1.x) {
+                telemetry.addLine("DuckWheel: Left");
                 duckWheelRight.setPower(-0.9);
                 duckWheelLeft.setPower(-0.9);
+            } else if (gamepad1.a)  {
+                telemetry.addLine("DuckWheel: Right");
+                duckWheelRight.setPower(0.9);
+                duckWheelLeft.setPower(0.9);
             } else {
+                telemetry.addLine("DuckWheel: None");
                 duckWheelRight.setPower(0);
                 duckWheelLeft.setPower(0);
+            }
+            telemetry.update();
+
+            if (gamepad2.dpad_up) {
+                arm.setPower(0.5);
+            } else {
+                arm.setPower(0);
+            }
+            if (gamepad2.dpad_down) {
+                arm.setPower(-0.5);
+            } else {
+                arm.setPower(0);
             }
 
             if (gamepad1.x && gamepad1.dpad_up) {
