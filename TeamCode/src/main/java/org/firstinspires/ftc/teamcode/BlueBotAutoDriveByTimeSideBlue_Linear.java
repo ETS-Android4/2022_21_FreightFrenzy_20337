@@ -1,17 +1,4 @@
-package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.Servo;
-
-@Autonomous(name = "Autonomous Blue Side DW")
-public class BlueBotAutoDriveByTimeSideBlue_Linear extends LinearOpMode{
-    private DcMotor rightFront;
-    private DcMotor leftFront;
-    private DcMotor rightRear;
-    private DcMotor leftRear;
     private DcMotor duckWheel;
     private Servo Rightgrabberservo;
     private Servo Leftgrabberservo;
