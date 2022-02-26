@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name = "SayWattGreenTeleOp")
 public class SayWattGreenTeleOp extends LinearOpMode {
@@ -11,6 +12,10 @@ public class SayWattGreenTeleOp extends LinearOpMode {
     private DcMotor frontLeft;
     private DcMotor backRight;
     private DcMotor backLeft;
+    private DcMotor duckWheelRight;
+    private DcMotor duckWheelLeft;
+    private Servo leftServo;
+    private Servo rightServo;
 
     @Override
     public void runOpMode() {
@@ -18,6 +23,10 @@ public class SayWattGreenTeleOp extends LinearOpMode {
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         backRight = hardwareMap.get(DcMotor.class, "backRight");
         backLeft = hardwareMap.get(DcMotor.class, "backLeft");
+//        duckWheelRight = hardwareMap.get(DcMotor.class, "duckWheelRight");
+//        duckWheelLeft = hardwareMap.get(DcMotor.class, "duckWheelLeft");
+        leftServo = hardwareMap.get(Servo.class, "leftServo");
+        rightServo = hardwareMap.get(Servo.class, "rightServo");
 
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -30,6 +39,8 @@ public class SayWattGreenTeleOp extends LinearOpMode {
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightServo.setDirection(Servo.Direction.FORWARD);
+        leftServo.setDirection(Servo.Direction.REVERSE);
 
         waitForStart();
         while (opModeIsActive()) {
@@ -50,7 +61,23 @@ public class SayWattGreenTeleOp extends LinearOpMode {
                 SpeedOfRobotArm = 1;
             }
             telemetry.update();
-
+//            if (gamepad1.a && gamepad1.x) {
+//                duckWheelLeft.setPower(0.9);
+//                duckWheelRight.setPower(0.9);
+//            } else if (gamepad1.a) {
+//                duckWheelLeft.setPower(-0.9);
+//                duckWheelRight.setPower(-0.9);
+//            } else {
+//                duckWheelLeft.setPower(0);
+//                duckWheelRight.setPower(0);
+//            }
+            if (gamepad2.right_bumper) {
+                leftServo.setPosition(1);
+                rightServo.setPosition(1);
+            } else if (gamepad2.left_bumper) {
+                leftServo.setPosition(0);
+                rightServo.setPosition(0);
+            }
             if (gamepad1.x && gamepad1.dpad_up) {
                 frontLeft.setPower(0.6);
                 frontRight.setPower(-0.6);
