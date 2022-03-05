@@ -12,8 +12,7 @@ public class SayWattGreenTeleOp extends LinearOpMode {
     private DcMotor frontLeft;
     private DcMotor backRight;
     private DcMotor backLeft;
-    private DcMotor duckWheelRight;
-    private DcMotor duckWheelLeft;
+    private DcMotor duckWheelMiddle;
     private Servo leftServo;
     private Servo rightServo;
 
@@ -23,10 +22,9 @@ public class SayWattGreenTeleOp extends LinearOpMode {
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         backRight = hardwareMap.get(DcMotor.class, "backRight");
         backLeft = hardwareMap.get(DcMotor.class, "backLeft");
-//        duckWheelRight = hardwareMap.get(DcMotor.class, "duckWheelRight");
-//        duckWheelLeft = hardwareMap.get(DcMotor.class, "duckWheelLeft");
-        leftServo = hardwareMap.get(Servo.class, "leftServo");
-        rightServo = hardwareMap.get(Servo.class, "rightServo");
+        duckWheelMiddle = hardwareMap.get(DcMotor.class, "duckWheelRight");
+        leftServo = hardwareMap.get(Servo.class, "clawServo");
+        rightServo = hardwareMap.get(Servo.class, "wristServo");
 
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -61,16 +59,13 @@ public class SayWattGreenTeleOp extends LinearOpMode {
                 SpeedOfRobotArm = 1;
             }
             telemetry.update();
-//            if (gamepad1.a && gamepad1.x) {
-//                duckWheelLeft.setPower(0.9);
-//                duckWheelRight.setPower(0.9);
-//            } else if (gamepad1.a) {
-//                duckWheelLeft.setPower(-0.9);
-//                duckWheelRight.setPower(-0.9);
-//            } else {
-//                duckWheelLeft.setPower(0);
-//                duckWheelRight.setPower(0);
-//            }
+            if (gamepad1.a && gamepad1.x) {
+                duckWheelMiddle.setPower(0.9);
+            } else if (gamepad1.a) {
+                duckWheelMiddle.setPower(-0.9);
+            } else {
+                duckWheelMiddle.setPower(0);
+            }
             if (gamepad2.right_bumper) {
                 leftServo.setPosition(1);
                 rightServo.setPosition(1);

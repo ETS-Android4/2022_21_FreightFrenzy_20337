@@ -1,8 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-public class Bluebotusewebcam {
+public class Bluebotusewebcam extends LinearOpMode {
     private DcMotor rightFront;
     private DcMotor leftFront;
     private DcMotor rightRear;
@@ -11,12 +12,10 @@ public class Bluebotusewebcam {
     private DcMotor grabber;
 
     float Hublevel;
+
     waitForStart();
-    while(
 
-    opModeIsActive())
-
-    {
+    while(opModeIsActive()) {
         rightFront.setPower(0.5);
         leftFront.setPower(-0.5);
         rightRear.setPower(0.5);
