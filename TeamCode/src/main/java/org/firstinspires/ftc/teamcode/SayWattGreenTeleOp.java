@@ -83,13 +83,13 @@ public class SayWattGreenTeleOp extends LinearOpMode {
             } else {
                 LinearSlide.setPower(0);
             }
-//            if (gamepad1.a && gamepad1.x) {
-//                duckWheelMiddle.setPower(0.9);
-//            } else if (gamepad1.a) {
-//                duckWheelMiddle.setPower(-0.9);
-//            } else {
-//                duckWheelMiddle.setPower(0);
-//            }
+            if (gamepad1.a && gamepad1.x) {
+                duckWheelMiddle.setPower(0.9);
+            } else if (gamepad1.a) {
+                duckWheelMiddle.setPower(-0.9);
+            } else {
+                duckWheelMiddle.setPower(0);
+            }
             if (gamepad2.right_bumper) {
                 leftServo.setPosition(1);
                 rightServo.setPosition(1);
