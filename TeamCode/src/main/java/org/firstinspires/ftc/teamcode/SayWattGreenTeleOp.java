@@ -2,10 +2,8 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name = "SayWattGreenTeleOp")
 public class SayWattGreenTeleOp extends LinearOpMode {
@@ -13,12 +11,6 @@ public class SayWattGreenTeleOp extends LinearOpMode {
     private DcMotor frontLeft;
     private DcMotor backRight;
     private DcMotor backLeft;
-    private DcMotor duckWheelMiddle;
-    private Servo leftServo;
-    private Servo rightServo;
-    private Servo clawServo;
-    private CRServo wristServo;
-    private DcMotor LinearSlide;
 
     @Override
     public void runOpMode() {
@@ -26,12 +18,6 @@ public class SayWattGreenTeleOp extends LinearOpMode {
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
         backRight = hardwareMap.get(DcMotor.class, "backRight");
         backLeft = hardwareMap.get(DcMotor.class, "backLeft");
-        duckWheelMiddle = hardwareMap.get(DcMotor.class, "duckWheelRight");
-        leftServo = hardwareMap.get(Servo.class, "clawServo");
-        rightServo = hardwareMap.get(Servo.class, "wristServo");
-        clawServo = hardwareMap.get(Servo.class, "clawServo");
-        wristServo = hardwareMap.get(CRServo.class, "wristServo");
-        LinearSlide = hardwareMap.get(DcMotor.class, "linearSlide");
 
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -44,14 +30,11 @@ public class SayWattGreenTeleOp extends LinearOpMode {
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-        rightServo.setDirection(Servo.Direction.FORWARD);
-        leftServo.setDirection(Servo.Direction.REVERSE);
-        clawServo.setDirection(Servo.Direction.FORWARD);
-        wristServo.setDirection(CRServo.Direction.REVERSE);
 
         waitForStart();
         while (opModeIsActive()) {
             double SpeedOfRobot = 0.1;
+            double SpeedOfRobotArm = 1;
             if (gamepad1.b) {
                 telemetry.addLine("Drive: Slowed Speed");
                 SpeedOfRobot = 0.05;
@@ -59,44 +42,15 @@ public class SayWattGreenTeleOp extends LinearOpMode {
                 telemetry.addLine("Drive: Default Speed");
                 SpeedOfRobot = 0.1;
             }
-
+            if (gamepad2.b) {
+                telemetry.addLine("Arm: Slowed Speed");
+                SpeedOfRobotArm = 0.6;
+            } else {
+                telemetry.addLine("Arm: Default Speed");
+                SpeedOfRobotArm = 1;
+            }
             telemetry.update();
-            if (gamepad2.right_bumper) {
-                wristServo.setPower(1);
-            } else if (gamepad2.left_bumper) {
-                wristServo.setPower(-1);
-            } else {
-                wristServo.setPower(0);
-            }
-            if (gamepad1.right_bumper) {
-                clawServo.setPosition(1);
-            } else if (gamepad1.left_bumper) {
-                clawServo.setPosition(-1);
-            } else {
-                clawServo.setPosition(0);
-            }
 
-            if (gamepad2.dpad_up) {
-                LinearSlide.setPower(0.5);
-            } else if (gamepad2.dpad_down) {
-                LinearSlide.setPower(-0.5);
-            } else {
-                LinearSlide.setPower(0);
-            }
-            if (gamepad1.a && gamepad1.x) {
-                duckWheelMiddle.setPower(0.9);
-            } else if (gamepad1.a) {
-                duckWheelMiddle.setPower(-0.9);
-            } else {
-                duckWheelMiddle.setPower(0);
-            }
-            if (gamepad2.right_bumper) {
-                leftServo.setPosition(1);
-                rightServo.setPosition(1);
-            } else if (gamepad2.left_bumper) {
-                leftServo.setPosition(0);
-                rightServo.setPosition(0);
-            }
             if (gamepad1.x && gamepad1.dpad_up) {
                 frontLeft.setPower(0.6);
                 frontRight.setPower(-0.6);

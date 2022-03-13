@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2022_21_FreightFrenzy_20337.iml" filepath="$PROJECT_DIR$/.idea/modules/2022_21_FreightFrenzy_20337.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FtcRobotController/2022_21_FreightFrenzy_20337.FtcRobotController.iml" filepath="$PROJECT_DIR$/.idea/modules/FtcRobotController/2022_21_FreightFrenzy_20337.FtcRobotController.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeamCode/2022_21_FreightFrenzy_20337.TeamCode.iml" filepath="$PROJECT_DIR$/.idea/modules/TeamCode/2022_21_FreightFrenzy_20337.TeamCode.iml" />
+    </modules>
+  </component>
+</project>

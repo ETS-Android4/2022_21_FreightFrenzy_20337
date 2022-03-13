@@ -28,7 +28,7 @@ public class SayWattBlackTeleOp extends LinearOpMode {
 
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
         frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-        backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        backLeft.setDirection(DcMotorSimple.Direction.FORWARD);
         backRight.setDirection(DcMotorSimple.Direction.REVERSE);
 
         waitForStart();
@@ -36,7 +36,7 @@ public class SayWattBlackTeleOp extends LinearOpMode {
             double SpeedOfRobotUpDown = 0.8;
             double SpeedOfRobotLeftRight = 0.8;
             double SpeedOfRobotArm = 1;
-            if (gamepad1.right_bumper) {
+            if (gamepad1.x) {
                 telemetry.addLine("Drive: Fast Speed");
                 SpeedOfRobotLeftRight = 100;
                 SpeedOfRobotUpDown = 100;
@@ -62,12 +62,12 @@ public class SayWattBlackTeleOp extends LinearOpMode {
             telemetry.update();
 
             if (gamepad2.dpad_up) {
-                arm.setPower(0.5);
+                arm.setPower(0.9);
             } else {
                 arm.setPower(0);
             }
             if (gamepad2.dpad_down) {
-                arm.setPower(-0.5);
+                arm.setPower(-0.9);
             } else {
                 arm.setPower(0);
             }
@@ -78,34 +78,30 @@ public class SayWattBlackTeleOp extends LinearOpMode {
                 backLeft.setPower(0.6);
                 backRight.setPower(0.6);
             } else {
-                if (gamepad1.dpad_up) {
+                if (gamepad1.dpad_down) {
                     frontLeft.setPower(SpeedOfRobotUpDown);
                     frontRight.setPower(SpeedOfRobotUpDown);
                     backLeft.setPower(SpeedOfRobotUpDown);
                     backRight.setPower(SpeedOfRobotUpDown);
-                } else if (gamepad1.x && gamepad1.dpad_down) {
-                    frontLeft.setPower(-0.6);
-                    frontRight.setPower(-0.6);
-                    backLeft.setPower(-0.6);
-                    backRight.setPower(-0.6);
+                } else if (gamepad1.dpad_down&& gamepad1.x) {
+                    frontLeft.setPower(0.6);
+                    frontRight.setPower(0.6);
+                    backLeft.setPower(0.6);
+                    backRight.setPower(0.6);
                 } else {
-                    if (gamepad1.dpad_down) {
+                    if (gamepad1.dpad_up) {
                         frontLeft.setPower(-SpeedOfRobotUpDown);
                         frontRight.setPower(-SpeedOfRobotUpDown);
                         backLeft.setPower(-SpeedOfRobotUpDown);
                         backRight.setPower(-SpeedOfRobotUpDown);
                     } else {
-                        if (gamepad1.x && gamepad1.dpad_left) {
-                            frontRight.setPower(0.8);
-                            frontLeft.setPower(-0.8);
-                            backRight.setPower(-0.8);
-                            backLeft.setPower(0.8);
-                        } else if (gamepad1.x && gamepad1.dpad_right) {
-                            frontRight.setPower(-0.8);
-                            frontLeft.setPower(0.8);
-                            backRight.setPower(0.8);
-                            backLeft.setPower(-0.8);
-                        } else {
+                        if (gamepad1.dpad_up&& gamepad1.x){
+                            frontLeft.setPower(-0.6);
+                            frontRight.setPower(-0.6);
+                            backLeft.setPower(-0.6);
+                            backRight.setPower(-0.6);
+                        }
+
                             if (gamepad1.dpad_left) {
                                 frontRight.setPower(-SpeedOfRobotLeftRight);
                                 frontLeft.setPower(SpeedOfRobotLeftRight);
@@ -121,6 +117,17 @@ public class SayWattBlackTeleOp extends LinearOpMode {
                                 frontRight.setPower(0);
                                 backLeft.setPower(0);
                                 backRight.setPower(0);
+                                if (gamepad1.right_bumper) {
+                                    frontRight.setPower(0.9);
+                                    frontLeft.setPower(-0.9);
+                                    backRight.setPower(-0.9);
+                                    backLeft.setPower(0.9);
+                                } else if (gamepad1.left_bumper) {
+                                    frontRight.setPower(-0.9);
+                                    frontLeft.setPower(0.9);
+                                    backRight.setPower(0.9);
+                                    backLeft.setPower(-0.9);
+                                }
                             }
                         }
                     }
@@ -129,4 +136,3 @@ public class SayWattBlackTeleOp extends LinearOpMode {
             telemetry.update();
         }
     }
-}
