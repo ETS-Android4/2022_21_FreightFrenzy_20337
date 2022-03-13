@@ -10,32 +10,32 @@ public class Bluebotusewebcam extends LinearOpMode {
     private DcMotor leftRear;
     private DcMotor arm;
     private DcMotor grabber;
-
     float Hublevel;
 
-    waitForStart();
+    @Override
+    public void runOpMode() throws InterruptedException {
+        waitForStart();
 
-    while(opModeIsActive()) {
-        rightFront.setPower(0.5);
-        leftFront.setPower(-0.5);
-        rightRear.setPower(0.5);
-        leftRear.setPower(-0.5);
-        Thread.sleep(500);
+        while(opModeIsActive()) {
+            rightFront.setPower(0.5);
+            leftFront.setPower(-0.5);
+            rightRear.setPower(0.5);
+            leftRear.setPower(-0.5);
+            Thread.sleep(500);
 
-        if (Hublevel == 1)
-            arm.setPower();
-        Thread.sleep(500)
-                grabber.setPower();
-
-
-            else if (Hublevel == 2)
-            arm.setPower();
-            Thread.sleep(500)
-            grabber.setPower();
-
-                else if (Hublevel == 3)
-                arm.setPower();
-                Thread.sleep(500)
-                grabber.setPower();
+            if (Hublevel == 1) {
+                arm.setPower(1);
+                Thread.sleep(500);
+                grabber.setPower(1);
+            } else if (Hublevel == 2) {
+                arm.setPower(1);
+                Thread.sleep(500);
+                grabber.setPower(1);
+            } else if (Hublevel == 3) {
+                arm.setPower(1);
+                Thread.sleep(500);
+                grabber.setPower(1);
+            }
+        }
     }
 }
