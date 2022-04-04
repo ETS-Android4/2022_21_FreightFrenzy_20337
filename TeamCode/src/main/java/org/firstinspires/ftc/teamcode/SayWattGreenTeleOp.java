@@ -45,7 +45,7 @@ public class SayWattGreenTeleOp extends LinearOpMode {
         waitForStart();
         while (opModeIsActive()) {
             double SpeedOfRobot = 0.1;
-            double SpeedOfArm = 0.6;
+            double SpeedOfArm = 0.8;
             if (gamepad1.x) {
                 telemetry.addLine("Drive: Slowed Speed");
                 SpeedOfRobot = 0.05;
@@ -58,7 +58,7 @@ public class SayWattGreenTeleOp extends LinearOpMode {
                 SpeedOfArm = 0.3;
             } else {
                 telemetry.addLine("Arm: Default Speed");
-                SpeedOfArm = 0.6;
+                SpeedOfArm = 0.8;
             }
 
             if (gamepad1.b) {
@@ -71,6 +71,17 @@ public class SayWattGreenTeleOp extends LinearOpMode {
                 duckWheelMiddle.setPower(0);
                 telemetry.addLine("DuckWheel: none");
             }
+
+            if (gamepad2.left_bumper) {
+                intake.setPower(1);
+                telemetry.addLine("Intake: Right");
+            } else if (gamepad2.right_bumper) {
+                intake.setPower(-1);
+                telemetry.addLine("Intake: Left");
+            } else {
+                intake.setPower(0);
+                telemetry.addLine("Intake: None");
+            }
             telemetry.update();
 
             if (gamepad2.dpad_up) {
@@ -79,14 +90,6 @@ public class SayWattGreenTeleOp extends LinearOpMode {
                 armMotor.setPower(-SpeedOfArm);
             } else {
                 armMotor.setPower(0);
-            }
-
-            if (gamepad2.left_bumper) {
-                intake.setPower(1);
-            } else if (gamepad2.right_bumper) {
-                intake.setPower(-1);
-            } else {
-                intake.setPower(0);
             }
 
             if (gamepad1.dpad_up) {
@@ -99,12 +102,12 @@ public class SayWattGreenTeleOp extends LinearOpMode {
                 frontRight.setPower(SpeedOfRobot);
                 backLeft.setPower(SpeedOfRobot);
                 backRight.setPower(SpeedOfRobot);
-            } else if (gamepad2.dpad_right) {
+            } else if (gamepad1.dpad_right) {
                 frontRight.setPower(SpeedOfRobot);
                 frontLeft.setPower(-SpeedOfRobot);
                 backRight.setPower(SpeedOfRobot);
                 backLeft.setPower(-SpeedOfRobot);
-            } else if (gamepad2.dpad_left) {
+            } else if (gamepad1.dpad_left) {
                 frontRight.setPower(-SpeedOfRobot);
                 frontLeft.setPower(SpeedOfRobot);
                 backRight.setPower(-SpeedOfRobot);
