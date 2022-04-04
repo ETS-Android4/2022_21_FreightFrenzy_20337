@@ -2,8 +2,10 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name = "SayWattGreenTeleOp")
 public class SayWattGreenTeleOp extends LinearOpMode {
@@ -13,6 +15,7 @@ public class SayWattGreenTeleOp extends LinearOpMode {
     private DcMotor backLeft;
     private DcMotor duckWheelMiddle;
     private DcMotor armMotor;
+    private CRServo intake;
 
     @Override
     public void runOpMode() {
@@ -22,6 +25,7 @@ public class SayWattGreenTeleOp extends LinearOpMode {
         backLeft = hardwareMap.get(DcMotor.class, "backLeft");
         duckWheelMiddle = hardwareMap.get(DcMotor.class, "duckWheel");
         armMotor = hardwareMap.get(DcMotor.class, "armMotor");
+        intake = hardwareMap.get(CRServo.class, "intake");
 
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -75,6 +79,14 @@ public class SayWattGreenTeleOp extends LinearOpMode {
                 armMotor.setPower(-SpeedOfArm);
             } else {
                 armMotor.setPower(0);
+            }
+
+            if (gamepad2.left_bumper) {
+                intake.setPower(1);
+            } else if (gamepad2.right_bumper) {
+                intake.setPower(-1);
+            } else {
+                intake.setPower(0);
             }
 
             if (gamepad1.dpad_up) {
