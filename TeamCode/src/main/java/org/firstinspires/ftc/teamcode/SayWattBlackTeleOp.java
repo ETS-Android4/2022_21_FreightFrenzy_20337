@@ -16,7 +16,7 @@ public class SayWattBlackTeleOp extends LinearOpMode {
     private DcMotor duckWheelLeft;
     private DcMotor duckWheelRight;
     private DcMotor arm;
-    private CRServo grabber;
+    private Servo grabber;
     private DcMotor armExtension;
 
     @Override
@@ -28,7 +28,7 @@ public class SayWattBlackTeleOp extends LinearOpMode {
         duckWheelLeft = hardwareMap.get(DcMotor.class, "duckWheelLeft");
         duckWheelRight = hardwareMap.get(DcMotor.class, "duckWheelRight");
         arm = hardwareMap.get(DcMotor.class, "arm");
-        grabber = hardwareMap.get(CRServo.class, "grabber");
+        grabber = hardwareMap.get(Servo.class, "grabber");
         armExtension = hardwareMap.get(DcMotor.class, "armExtension");
 
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -40,7 +40,7 @@ public class SayWattBlackTeleOp extends LinearOpMode {
         while (opModeIsActive()) {
             double SpeedOfRobotUpDown = 0.5;
             double SpeedOfRobotLeftRight = 0.5;
-            double SpeedOfRobotArm = 1;
+            double SpeedOfRobotArm = 0.6;
             if (gamepad1.b) {
                 telemetry.addLine("Drive: Fast Speed");
                 SpeedOfRobotLeftRight = 100;
@@ -51,15 +51,11 @@ public class SayWattBlackTeleOp extends LinearOpMode {
                 SpeedOfRobotUpDown = 0.5;
             }
             if (gamepad2.a) {
-                telemetry.addLine("Arm: Slow Speed");
-                SpeedOfRobotArm = 0.65;
+                telemetry.addLine("Arm: Fast Speed");
+                SpeedOfRobotArm = 1;
             } else {
-
-
-
-
                 telemetry.addLine("Arm: Default Speed");
-                SpeedOfRobotArm = 0.8;
+                SpeedOfRobotArm = 0.6;
             }
 
             if (gamepad1.a && gamepad1.x) {
@@ -99,12 +95,16 @@ public class SayWattBlackTeleOp extends LinearOpMode {
             }
 
             if (gamepad2.b) {
-                grabber.setPower(1);
+                grabber.setPosition(1);
             } else if (gamepad2.x) {
-                grabber.setPower(-1);
+                grabber.setPosition(0);
             } else {
-                grabber.setPower(0);
+                // jeffery bezos
+                // sheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeesh
+                // tru
+                // i agre
             }
+
             if (gamepad1.dpad_down) {
                 frontLeft.setPower(SpeedOfRobotUpDown);
                 frontRight.setPower(SpeedOfRobotUpDown);
