@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -55,7 +55,7 @@ public class RedSideFindCup extends LinearOpMode {
         turn(-0.3, 1300, false);
         drive(0.7, 666);
 
-        Thread.sleep(500);
+        Thread.sleep(300);
         distance = getDistanceFromCup();
         foundCup = checkFoundCup(distance, 70);
         if (foundCup) {
@@ -72,7 +72,7 @@ public class RedSideFindCup extends LinearOpMode {
             Thread.sleep(1700);
             armExtension.setPower(0);
             armExtension.setPower(-0.8);
-            Thread.sleep(1200);
+            Thread.sleep(900);
             armExtension.setPower(0);
             arm.setPower(0.6);
             Thread.sleep(1000);
@@ -111,7 +111,7 @@ public class RedSideFindCup extends LinearOpMode {
             drive(0.7, 800);
             grabber.setPosition(1);
             Thread.sleep(500);
-            drive(-0.7,1300);
+            drive(-0.7,1500);
             strafe(1,4000);
             stop();
         }
@@ -124,7 +124,7 @@ public class RedSideFindCup extends LinearOpMode {
         if (foundCup) {
             levelOnHub = 1;
             RobotLog.addGlobalWarningMessage("Place the block on " + levelOnHub);
-            drive(0.7, 2000);
+            drive(0.7, 1000);
             turn(-0.7,1200, false);
             drive(-0.7, 1200);
             arm.setPower(0.5);
@@ -140,7 +140,7 @@ public class RedSideFindCup extends LinearOpMode {
             arm.setPower(0.6);
             Thread.sleep(1500);
             arm.setPower(0);
-            drive(0.7, 700);
+            drive(0.7, 800);
             grabber.setPosition(1);
             Thread.sleep(500);
             drive(-0.7,1300);
@@ -149,7 +149,7 @@ public class RedSideFindCup extends LinearOpMode {
         }
         if (levelOnHub == 0) {
             RobotLog.addGlobalWarningMessage("Could Not detect Cup. Self Destructing!");
-            drive(0.7, 1800);
+            drive(0.7, 1000);
             turn(-0.7,1200, false);
             drive(-0.7, 1000);
             arm.setPower(0.5);
@@ -160,10 +160,10 @@ public class RedSideFindCup extends LinearOpMode {
             Thread.sleep(1700);
             armExtension.setPower(0);
             armExtension.setPower(-0.8);
-            Thread.sleep(1000);
+            Thread.sleep(800);
             armExtension.setPower(0);
             arm.setPower(0.6);
-            Thread.sleep(1000);
+            Thread.sleep(800);
             arm.setPower(0);
             drive(0.7, 1000);
             grabber.setPosition(1);

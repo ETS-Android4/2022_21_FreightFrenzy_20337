@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.util.RobotLog;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-@Autonomous(name = "BlueRedDuck")
+@Autonomous(name = "RedRedDuck")
 public class BlueSideFindCup extends LinearOpMode {
     private DistanceSensor sensorRange;
     private DcMotor frontRight;
@@ -61,7 +61,7 @@ public class BlueSideFindCup extends LinearOpMode {
         if (foundCup) {
             levelOnHub = 1;
             RobotLog.addGlobalWarningMessage("Place the block on " + levelOnHub);
-            drive(0.7, 2400);
+            drive(0.7, 2200);
             turn(0.7,1200, false);
             drive(-0.7, 1000);
             arm.setPower(0.5);
@@ -84,7 +84,7 @@ public class BlueSideFindCup extends LinearOpMode {
             strafe(-1,3000);
             stop();
         }
-        drive(0.7, 300);
+        drive(0.7, 500);
 
         Thread.sleep(500);
         distance = getDistanceFromCup();
@@ -92,8 +92,8 @@ public class BlueSideFindCup extends LinearOpMode {
         if (foundCup) {
             levelOnHub = 2;
             RobotLog.addGlobalWarningMessage("Place the block on " + levelOnHub);
-            drive(0.7, 2200);
-            turn(0.7,1200, false);
+            drive(0.7, 1400);
+            turn(0.7,1000, false);
             drive(-0.7, 1000);
             arm.setPower(0.5);
             Thread.sleep(750);
@@ -103,20 +103,21 @@ public class BlueSideFindCup extends LinearOpMode {
             Thread.sleep(1700);
             armExtension.setPower(0);
             armExtension.setPower(-0.8);
-            Thread.sleep(1200);
+            Thread.sleep(450);
             armExtension.setPower(0);
             arm.setPower(0.6);
             Thread.sleep(1100);
             arm.setPower(0);
-            drive(0.7, 800);
+            drive(0.7, 600);
             grabber.setPosition(1);
             Thread.sleep(500);
-            drive(-0.7,1300);
+            drive(-0.7,1500);
             strafe(-1,3000);
             stop();
         }
-
-        drive(0.7, 300);
+//jeffery fan club tru i agree cool boi sheeshy boi parth dinosaur Parth hoiyaa Parth throwing the soogy bread and then eating ittru
+        //
+        drive(0.7, 500);
 
         Thread.sleep(700);
         distance = getDistanceFromCup();
@@ -124,52 +125,52 @@ public class BlueSideFindCup extends LinearOpMode {
         if (foundCup) {
             levelOnHub = 3;
             RobotLog.addGlobalWarningMessage("Place the block on " + levelOnHub);
-            drive(0.7, 1500);
-            turn(0.7,1200, false);
+            drive(0.7, 800);
+            turn(0.7,1000, false);
             drive(-0.7, 1000);
             arm.setPower(0.5);
-            Thread.sleep(750);
+            Thread.sleep(1100);
             arm.setPower(0);
             drive(0.7, 300);
             armExtension.setPower(-1);
-            Thread.sleep(1700);
+            Thread.sleep(1800);
             armExtension.setPower(0);
             armExtension.setPower(-0.8);
-            Thread.sleep(1200);
+            Thread.sleep(200);
             armExtension.setPower(0);
             arm.setPower(0.6);
-            Thread.sleep(800);
+            Thread.sleep(700);
             arm.setPower(0);
-            drive(0.7, 900);
+            drive(0.7, 1100);
             grabber.setPosition(1);
             Thread.sleep(500);
-            drive(-0.7,1400);
-            strafe(-1,4000);
+            drive(-0.7,1900);
+            strafe(-1,3000);
             stop();
         }
         if (levelOnHub == 0) {
             RobotLog.addGlobalWarningMessage("Could Not detect Cup. Self Destructing!");
-            drive(0.7, 1300);
-            turn(0.7,1200, false);
+            drive(0.7, 600);
+            turn(0.7,1000, false);
             drive(-0.7, 1000);
             arm.setPower(0.5);
-            Thread.sleep(750);
+            Thread.sleep(1100);
             arm.setPower(0);
             drive(0.7, 300);
             armExtension.setPower(-1);
-            Thread.sleep(1700);
+            Thread.sleep(1800);
             armExtension.setPower(0);
             armExtension.setPower(-0.8);
-            Thread.sleep(1200);
+            Thread.sleep(200);
             armExtension.setPower(0);
             arm.setPower(0.6);
-            Thread.sleep(800);
+            Thread.sleep(700);
             arm.setPower(0);
-            drive(0.7, 900);
+            drive(0.7, 1100);
             grabber.setPosition(1);
             Thread.sleep(500);
-            drive(-0.7,1400);
-            strafe(-1,4000);
+            drive(-0.7,1900);
+            strafe(-1,3500);
             stop();
         }
         // Drive robot to the level on hub and place block.

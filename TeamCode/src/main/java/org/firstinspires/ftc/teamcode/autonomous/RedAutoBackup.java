@@ -10,8 +10,8 @@ import com.qualcomm.robotcore.util.RobotLog;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-@Autonomous(name = "BlueAutoBackup")
-public class BlueAutoBackup extends LinearOpMode {
+@Autonomous(name = "RedAutoBackup")
+public class RedAutoBackup extends LinearOpMode {
     private DistanceSensor sensorRange;
     private DcMotor frontRight;
     private DcMotor frontLeft;
@@ -49,7 +49,7 @@ public class BlueAutoBackup extends LinearOpMode {
 
         drive(-0.5, 250);
         spinWheel(-1.1, 3000);
-        strafe(-1, 1000);
+        strafe(1, 1100);
         drive(-0.5,2000);
     }
 
